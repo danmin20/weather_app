@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import { StyleSheet, Text, View, StatusBar } from 'react-native';
 import { LinearGradient } from "expo-linear-gradient";
 import Weather from './Weather.js';
-import Key from './key/API_KEY'
+import Key from './key/API_KEY';
 
 export default class App extends Component {
   state ={
