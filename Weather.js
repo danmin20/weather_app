@@ -7,42 +7,42 @@ import PropTypes from 'prop-types'
 
 const weatherCases = {
   Rain: {
-    colors: ["#00C6FB", "#005BEA"],
+    colors: ["#BDABFD", "#083C80"],
     title: "Rainy",
     kor: "비",
     subtitle: "Please take your umbrella!",
     icon: "weather-pouring"
   },
   Clear: {
-    colors: ["#FEF253", "#FF7300"],
+    colors: ["#FFCF6F", "#FF6747"],
     title: "Sunny",
     kor: "맑음",
     subtitle: "Make sure you put on sunsreen!",
     icon: "weather-sunny"
   },
   Thunderstorm: {
-    colors: ["#00ECBC", "#007ADF"],
+    colors: ["#FFD89F", "#300F66"],
     title: "Thunderstorm",
     kor: "뇌우",
     subtitle: "Don't cry!",
     icon: "weather-lightning"
   },
   Clouds: {
-    colors: ["#D7D2CC", "#304352"],
+    colors: ["#F2D6D4", "#1D4052"],
     title: "Cloudy",
     kor: "구름",
     subtitle: "Don't be depressed!",
     icon: "weather-cloudy"
   },
   Snow: {
-    colors: ["#7DE2FC", "#B9B6E5"],
+    colors: ["#CEFBFE", "#DABBE8"],
     title: "Snowy",
     kor: "눈",
     subtitle: "Do you wanna build a snowman?",
     icon: "weather-snowy"
   },
   Drizzle: {
-    colors: ["#89F7FE", "#66A6FF"],
+    colors: ["#CAB5C8", "#739FC2"],
     title: "Drizzle",
     kor: "소나기",
     subtitle: "Just in case, take your umbrella!",
@@ -56,7 +56,7 @@ const weatherCases = {
     icon: "weather-partlycloudy"
   },
   Mist: {
-    colors: ["#D7D2CC", "#304352"],
+    colors: ["#EFF9F8", "#625175"],
     title: "Misty",
     kor: "안개",
     subtitle: "Be careful not to get water in your lungs!",
