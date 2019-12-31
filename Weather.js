@@ -55,7 +55,7 @@ const weatherCases = {
   }
 };
 
-function Weather( { weatherName, temp }) {
+function Weather( { weatherName, temp, max_temp, min_temp, locate }) {
     return (
         <LinearGradient
         colors={weatherCases[weatherName].colors}
@@ -64,6 +64,8 @@ function Weather( { weatherName, temp }) {
         <View style={styles.upper}>
             <MaterialCommunityIcons color="white" size={130} name={weatherCases[weatherName].icon}/>
             <Text style={styles.temp}>{temp}°C</Text>
+            <Text style={styles.text}>MAX : {max_temp}°C MIN : {min_temp}°C</Text>
+            <Text style={styles.text}>LOCATION : {locate}</Text>
         </View>
         <View style={styles.lower}>
             <Text style={styles.title}>{weatherCases[weatherName].title}</Text>
@@ -74,9 +76,12 @@ function Weather( { weatherName, temp }) {
 }
 
 Weather.propTypes = {
-    temp: PropTypes.number.isRequired,
-    weatherName: PropTypes.string.isRequired
-}
+  temp: PropTypes.number.isRequired,
+  max_temp: PropTypes.number.isRequired,
+  min_temp: PropTypes.number.isRequired,
+  weatherName: PropTypes.string.isRequired,
+  locate: PropTypes.string.isRequired
+};
 
 export default Weather;
 
@@ -85,7 +90,7 @@ const styles = StyleSheet.create({
         flex: 1
     },
     upper: {
-        flex: 1,
+        flex: 2,
         alignItems: 'center',
         justifyContent: 'center',
         backgroundColor: "transparent",
@@ -94,7 +99,12 @@ const styles = StyleSheet.create({
         fontSize: 45,
         backgroundColor: "transparent",
         color: "white",
-        marginTop: 10
+        marginTop: 10,
+        marginBottom: 15
+    },
+    text: {
+        fontSize:15,
+        color: "white",
     },
     lower: {
         flex: 1,
