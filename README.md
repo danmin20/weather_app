@@ -1,6 +1,14 @@
 # weather_app
+Weather App Made With React Native
 
-###ScreenShots
+## App
+Name : Whether Weater<br/>
+Download : [android apk]
+
+### 개발환경
+Visual Studio Code
+
+### ScreenShots
 <div>
 <img width='200' src="https://user-images.githubusercontent.com/50590192/71628133-cf3f1f80-2c39-11ea-8430-69017eeab3f2.png">
 <img width='200' src="https://user-images.githubusercontent.com/50590192/71628143-d9f9b480-2c39-11ea-9b59-db6194dc03e7.png">
