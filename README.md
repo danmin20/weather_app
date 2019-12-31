@@ -2,7 +2,7 @@
 Weather App Made With React Native
 
 ## App
-Name : Whether Weater<br/>
+Name : Whether Weather<br/>
 Download : [android apk]
 
 ### 개발환경
