@@ -120,7 +120,7 @@ export default class App extends Component {
           min_temperature: json.main.temp_min,
           name: json.weather[0].main,
           location: json.name,
-          //isLoaded: true,
+          isLoaded: true,
         });
       });
   };
