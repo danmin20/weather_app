@@ -2,7 +2,7 @@
 Weather App Made With React Native
 
 ## App
-Name : Whether Weather<br/>
+Name : "Whether Weather"<br/>
 Download : [android apk](https://expo.io/artifacts/72dd8743-6d56-44f9-b2f4-59b5790cc857)
 
 ### 개발환경
