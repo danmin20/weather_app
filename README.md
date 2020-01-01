@@ -1,4 +1,4 @@
-# weather_app
+# Weather App
 Weather App Made With React Native
 
 ## App
