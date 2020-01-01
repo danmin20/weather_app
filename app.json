@@ -1,6 +1,6 @@
 {
   "expo": {
-    "name": "weather_app",
+    "name": "Whether Weather",
     "slug": "weather_app",
     "privacy": "public",
     "sdkVersion": "36.0.0",
@@ -28,6 +28,7 @@
     },
     "android": {
       "package": "danmin.WEATHER"
-    }
+    },
+    "description": ""
   }
 }
