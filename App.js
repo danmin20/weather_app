@@ -14,7 +14,8 @@ export default class App extends Component {
     max_temperature: null,
     min_temperature: null,
     name: null,
-    locate: null
+    locate: null,
+    refreshing: false
   }
   componentDidMount(){
     navigator.geolocation.getCurrentPosition(
@@ -42,10 +43,11 @@ export default class App extends Component {
         {isLoaded ? (
           <Weather
             weatherName={name}
-            temp={Math.round(temperature - 273.15)}
-            max_temp={Math.round(max_temperature - 273.15)}
-            min_temp={Math.round(min_temperature - 273.15)}
+            temp={temperature}
+            max_temp={max_temperature}
+            min_temp={min_temperature}
             locate={location}
+            onRefresh={this._handleRefresh}
           />
         ) : (
           <LinearGradient colors={["#FAEB98", "#FA9D98"]} style={styles.loading}>
@@ -109,7 +111,7 @@ export default class App extends Component {
   _getWeather = (lat, lon) => {
     const API_KEY = Key();
     fetch(
-      `http://api.openweathermap.org/data/2.5/weather?lat=${lat}&lon=${lon}&APPID=${API_KEY}`
+      `http://api.openweathermap.org/data/2.5/weather?lat=${lat}&lon=${lon}&APPID=${API_KEY}&units=metric`
     )
       .then(response => response.json())
       .then(json => {
@@ -121,9 +123,15 @@ export default class App extends Component {
           name: json.weather[0].main,
           location: json.name,
           isLoaded: true,
+          refreshing: false
         });
       });
   };
+  _handleRefresh = () => {
+    this.setState({
+      refreshing: true,
+    }, this._getWeather);
+  }
 }
 
 const styles = StyleSheet.create({

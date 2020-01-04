@@ -1,9 +1,10 @@
-import React, { Component } from 'react';
-import { StyleSheet, Text, View } from 'react-native';
+import React from "react";
+import { StyleSheet, Text, View } from "react-native";
 import { LinearGradient } from "expo-linear-gradient";
 import { MaterialCommunityIcons } from "@expo/vector-icons";
 import { Entypo } from "@expo/vector-icons";
-import PropTypes from 'prop-types'
+import { EvilIcons } from "@expo/vector-icons";
+import PropTypes from "prop-types";
 
 const weatherCases = {
   Rain: {
@@ -64,38 +65,39 @@ const weatherCases = {
   }
 };
 
-function Weather( { weatherName, temp, max_temp, min_temp, locate }) {
-    return (
-      <LinearGradient
-        colors={weatherCases[weatherName].colors}
-        style={styles.container}
-      >
-        <View style={styles.upper}>
-          <View style={styles.location}>
-            <Entypo color="white" size={25} name="location-pin" />
-            <Text style={styles.location}>{locate}</Text>
-          </View>
-          <MaterialCommunityIcons
-            color="white"
-            size={130}
-            name={weatherCases[weatherName].icon}
-          />
-          <Text style={styles.temp}>{temp}°C</Text>
-          <Text style={styles.temps}>
-            MIN : {min_temp}°C  MAX : {max_temp}°C
-          </Text>
+function Weather({ weatherName, temp, max_temp, min_temp, locate }) {
+  return (
+    <LinearGradient
+      colors={weatherCases[weatherName].colors}
+      style={styles.container}
+    >
+      <View style={styles.upper}>
+        <View style={styles.location}>
+          <EvilIcons size={20} color="white" name="refresh" />
+          <Entypo color="white" size={25} name="location-pin" />
+          <Text style={styles.location}>{locate}</Text>
         </View>
-        <View style={styles.lower}>
-          <View style={styles.weather}>
-            <Text style={styles.title}>{weatherCases[weatherName].title}</Text>
-            <Text style={styles.kor}>: {weatherCases[weatherName].kor}</Text>
-          </View>
-          <Text style={styles.subtitle}>
-            {weatherCases[weatherName].subtitle}
-          </Text>
+        <MaterialCommunityIcons
+          color="white"
+          size={130}
+          name={weatherCases[weatherName].icon}
+        />
+        <Text style={styles.temp}>{temp}°C</Text>
+        <Text style={styles.temps}>
+          MIN : {min_temp}°C MAX : {max_temp}°C
+        </Text>
+      </View>
+      <View style={styles.lower}>
+        <View style={styles.weather}>
+          <Text style={styles.title}>{weatherCases[weatherName].title}</Text>
+          <Text style={styles.kor}>: {weatherCases[weatherName].kor}</Text>
         </View>
-      </LinearGradient>
-    );
+        <Text style={styles.subtitle}>
+          {weatherCases[weatherName].subtitle}
+        </Text>
+      </View>
+    </LinearGradient>
+  );
 }
 
 Weather.propTypes = {
@@ -109,61 +111,61 @@ Weather.propTypes = {
 export default Weather;
 
 const styles = StyleSheet.create({
-    container: {
-        flex: 1
-    },
-    upper: {
-        flex: 2,
-        alignItems: 'center',
-        justifyContent: 'center',
-        backgroundColor: "transparent",
-    },
-    temp: {
-        fontSize: 45,
-        backgroundColor: "transparent",
-        color: "white",
-        marginTop: 10,
-    },
-    temps: {
-        fontSize:15,
-        color: "white",
-    },
-    location: {
-        fontSize:20,
-        color: "white",
-        marginTop: 5,
-        marginBottom: 5,
-        flexDirection: 'row',
-        alignItems: 'baseline'
-    },
-    weather: {
-        flexDirection: 'row',
-    },
-    lower: {
-        flex: 1,
-        alignItems: "flex-start",
-        justifyContent: "flex-end",
-        paddingLeft: 25
-    },
-    title: {
-        fontSize: 35,
-        backgroundColor: "transparent",
-        color: "white",
-        paddingBottom: 10,
-        fontWeight: "300"
-    },
-    kor: {
-        fontSize: 20,
-        backgroundColor: "transparent",
-        color: "white",
-        marginLeft: 10,
-        marginTop: 15,
-        fontWeight: "300"
-    },
-    subtitle: {
-        fontSize: 20,
-        backgroundColor: "transparent",
-        color: "white",
-        marginBottom: 24
-    }
-})
+  container: {
+    flex: 1
+  },
+  upper: {
+    flex: 2,
+    alignItems: "center",
+    justifyContent: "center",
+    backgroundColor: "transparent"
+  },
+  temp: {
+    fontSize: 45,
+    backgroundColor: "transparent",
+    color: "white",
+    marginTop: 10
+  },
+  temps: {
+    fontSize: 15,
+    color: "white"
+  },
+  location: {
+    fontSize: 20,
+    color: "white",
+    marginTop: 5,
+    marginBottom: 5,
+    flexDirection: "row",
+    alignItems: "baseline"
+  },
+  weather: {
+    flexDirection: "row"
+  },
+  lower: {
+    flex: 1,
+    alignItems: "flex-start",
+    justifyContent: "flex-end",
+    paddingLeft: 25
+  },
+  title: {
+    fontSize: 35,
+    backgroundColor: "transparent",
+    color: "white",
+    paddingBottom: 10,
+    fontWeight: "300"
+  },
+  kor: {
+    fontSize: 20,
+    backgroundColor: "transparent",
+    color: "white",
+    marginLeft: 10,
+    marginTop: 15,
+    fontWeight: "300"
+  },
+  subtitle: {
+    fontSize: 20,
+    backgroundColor: "transparent",
+    color: "white",
+    marginBottom: 24
+  }
+});
