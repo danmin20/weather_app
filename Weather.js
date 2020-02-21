@@ -1,10 +1,16 @@
 import React from "react";
-import { StyleSheet, Text, View } from "react-native";
+import {
+  StyleSheet,
+  Text,
+  View,
+  ScrollView,
+  RefreshControl
+} from "react-native";
 import { LinearGradient } from "expo-linear-gradient";
 import { MaterialCommunityIcons } from "@expo/vector-icons";
 import { Entypo } from "@expo/vector-icons";
-import { EvilIcons } from "@expo/vector-icons";
 import PropTypes from "prop-types";
+import { Dimensions } from "react-native";
 
 const weatherCases = {
   Rain: {
@@ -65,37 +71,53 @@ const weatherCases = {
   }
 };
 
-function Weather({ weatherName, temp, max_temp, min_temp, locate }) {
+const { height } = Dimensions.get("screen");
+
+function Weather({
+  weatherName,
+  temp,
+  max_temp,
+  min_temp,
+  locate,
+  onRefresh,
+  refreshing
+}) {
   return (
     <LinearGradient
       colors={weatherCases[weatherName].colors}
       style={styles.container}
     >
-      <View style={styles.upper}>
-        <View style={styles.location}>
-          <EvilIcons size={20} color="white" name="refresh" />
-          <Entypo color="white" size={25} name="location-pin" />
-          <Text style={styles.location}>{locate}</Text>
+      <ScrollView
+        style={styles.container}
+        refreshControl={
+          <RefreshControl refreshing={refreshing} onRefresh={onRefresh} />
+        }
+      >
+        <View style={styles.upper}>
+          <View style={styles.location}>
+            <Entypo color="white" size={25} name="location-pin" />
+            <Text style={styles.location}>{locate}</Text>
+          </View>
+          <MaterialCommunityIcons
+            color="white"
+            size={130}
+            name={weatherCases[weatherName].icon}
+          />
+          <Text style={styles.temp}>{temp}°C</Text>
+          <Text style={styles.temps}>
+            MIN : {min_temp}°C MAX : {max_temp}°C
+          </Text>
         </View>
-        <MaterialCommunityIcons
-          color="white"
-          size={130}
-          name={weatherCases[weatherName].icon}
-        />
-        <Text style={styles.temp}>{temp}°C</Text>
-        <Text style={styles.temps}>
-          MIN : {min_temp}°C MAX : {max_temp}°C
-        </Text>
-      </View>
-      <View style={styles.lower}>
-        <View style={styles.weather}>
-          <Text style={styles.title}>{weatherCases[weatherName].title}</Text>
-          <Text style={styles.kor}>: {weatherCases[weatherName].kor}</Text>
+        <View style={styles.lower}>
+          <View style={styles.weather}>
+            <Text style={styles.title}>{weatherCases[weatherName].title}</Text>
+            <Text style={styles.kor}>: {weatherCases[weatherName].kor}</Text>
+          </View>
+          <Text style={styles.subtitle}>
+            {weatherCases[weatherName].subtitle}
+          </Text>
         </View>
-        <Text style={styles.subtitle}>
-          {weatherCases[weatherName].subtitle}
-        </Text>
-      </View>
+      </ScrollView>
     </LinearGradient>
   );
 }
@@ -112,7 +134,7 @@ export default Weather;
 
 const styles = StyleSheet.create({
   container: {
-    flex: 1
+    height: height
   },
   upper: {
     flex: 2,

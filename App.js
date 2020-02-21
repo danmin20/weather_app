@@ -1,13 +1,13 @@
-import React, { Component } from 'react';
-import { StyleSheet, Text, View, StatusBar } from 'react-native';
+import React, { Component } from "react";
+import { StyleSheet, Text, View, StatusBar } from "react-native";
 import { LinearGradient } from "expo-linear-gradient";
 import { MaterialCommunityIcons } from "@expo/vector-icons";
 import { Entypo } from "@expo/vector-icons";
-import Weather from './Weather.js';
-import Key from './key/API_KEY';
+import Weather from "./Weather.js";
+import Key from "./key/API_KEY";
 
 export default class App extends Component {
-  state ={
+  state = {
     isLoaded: false,
     error: null,
     temperature: null,
@@ -16,16 +16,14 @@ export default class App extends Component {
     name: null,
     locate: null,
     refreshing: false
-  }
-  componentDidMount(){
-    navigator.geolocation.getCurrentPosition(
-      position => {
-       this._getWeather(position.coords.latitude, position.coords.longitude);
-      }
-    ),
-    error => {
-      this.setState({errer: error})
-    }
+  };
+  componentDidMount() {
+    navigator.geolocation.getCurrentPosition(position => {
+      this._getWeather(position.coords.latitude, position.coords.longitude);
+    }),
+      error => {
+        this.setState({ errer: error });
+      };
   }
   render() {
     const {
@@ -35,7 +33,8 @@ export default class App extends Component {
       max_temperature,
       min_temperature,
       name,
-      location
+      location,
+      refreshing
     } = this.state;
     return (
       <View style={styles.container}>
@@ -48,9 +47,13 @@ export default class App extends Component {
             min_temp={min_temperature}
             locate={location}
             onRefresh={this._handleRefresh}
+            refreshing={refreshing}
           />
         ) : (
-          <LinearGradient colors={["#FAEB98", "#FA9D98"]} style={styles.loading}>
+          <LinearGradient
+            colors={["#FAEB98", "#FA9D98"]}
+            style={styles.loading}
+          >
             <View style={styles.symbol}>
               <View style={styles.icons}>
                 <MaterialCommunityIcons
@@ -128,10 +131,13 @@ export default class App extends Component {
       });
   };
   _handleRefresh = () => {
-    this.setState({
-      refreshing: true,
-    }, this._getWeather);
-  }
+    navigator.geolocation.getCurrentPosition(position => {
+      this._getWeather(position.coords.latitude, position.coords.longitude);
+    }),
+      this.setState({
+        refreshing: true
+      });
+  };
 }
 
 const styles = StyleSheet.create({
@@ -150,13 +156,13 @@ const styles = StyleSheet.create({
   loadingText: {
     color: "white",
     fontSize: 17,
-    alignSelf: 'center',
+    alignSelf: "center",
     paddingTop: 15
   },
   icons: {
-    flexDirection: 'row'
+    flexDirection: "row"
   },
   symbol: {
-    alignSelf: 'center'
+    alignSelf: "center"
   }
 });
