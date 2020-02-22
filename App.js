@@ -1,8 +1,10 @@
-import React, { Component } from "react";
+import React, { Component, useEffect } from "react";
 import { StyleSheet, Text, View, StatusBar } from "react-native";
 import { LinearGradient } from "expo-linear-gradient";
 import { MaterialCommunityIcons } from "@expo/vector-icons";
 import { Entypo } from "@expo/vector-icons";
+import * as Font from "expo-font";
+import { Asset } from "expo-asset";
 import Weather from "./Weather.js";
 import Key from "./key/API_KEY";
 
@@ -17,7 +19,18 @@ export default class App extends Component {
     locate: null,
     refreshing: false
   };
+  preLoad = async () => {
+    try {
+      await Font.loadAsync({
+        ...Entypo.font,
+        ...MaterialCommunityIcons.font
+      });
+    } catch (e) {
+      console.log(e);
+    }
+  };
   componentDidMount() {
+    this.preLoad();
     navigator.geolocation.getCurrentPosition(position => {
       this._getWeather(position.coords.latitude, position.coords.longitude);
     }),

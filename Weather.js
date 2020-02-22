@@ -7,8 +7,7 @@ import {
   RefreshControl
 } from "react-native";
 import { LinearGradient } from "expo-linear-gradient";
-import { MaterialCommunityIcons } from "@expo/vector-icons";
-import { Entypo } from "@expo/vector-icons";
+import { MaterialCommunityIcons, Entypo } from "@expo/vector-icons";
 import PropTypes from "prop-types";
 import { Dimensions } from "react-native";
 
@@ -104,9 +103,10 @@ function Weather({
             name={weatherCases[weatherName].icon}
           />
           <Text style={styles.temp}>{temp}°C</Text>
-          <Text style={styles.temps}>
-            MIN : {min_temp}°C MAX : {max_temp}°C
-          </Text>
+          <View style={styles.minmax}>
+            <Text style={styles.temps}>MIN   {min_temp}°C</Text>
+            <Text style={styles.temps}>MAX  {max_temp}°C </Text>
+          </View>
         </View>
         <View style={styles.lower}>
           <View style={styles.weather}>
@@ -134,19 +134,23 @@ export default Weather;
 
 const styles = StyleSheet.create({
   container: {
-    height: height
+    height: height,
+    flex: 1
   },
   upper: {
-    flex: 2,
+    height: height / 1.5,
     alignItems: "center",
-    justifyContent: "center",
-    backgroundColor: "transparent"
+    justifyContent: "center"
   },
   temp: {
     fontSize: 45,
     backgroundColor: "transparent",
     color: "white",
     marginTop: 10
+  },
+  minmax: {
+    marginTop: 10,
+    width: 100
   },
   temps: {
     fontSize: 15,
@@ -164,7 +168,7 @@ const styles = StyleSheet.create({
     flexDirection: "row"
   },
   lower: {
-    flex: 1,
+    marginTop: 90,
     alignItems: "flex-start",
     justifyContent: "flex-end",
     paddingLeft: 25
@@ -173,16 +177,14 @@ const styles = StyleSheet.create({
     fontSize: 35,
     backgroundColor: "transparent",
     color: "white",
-    paddingBottom: 10,
-    fontWeight: "300"
+    paddingBottom: 10
   },
   kor: {
     fontSize: 20,
     backgroundColor: "transparent",
     color: "white",
     marginLeft: 10,
-    marginTop: 15,
-    fontWeight: "300"
+    marginTop: 15
   },
   subtitle: {
     fontSize: 20,
