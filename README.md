@@ -3,7 +3,7 @@ Weather App Made With React Native
 
 ## App
 Name : "Whether Weather"<br/>
-Download : [android apk](https://expo.io/artifacts/72dd8743-6d56-44f9-b2f4-59b5790cc857)
+Download : [android apk](https://expo.io/artifacts/557a33e5-7fd7-4a5a-b2f7-cf6abf015742)
 
 ### 개발환경
 Visual Studio Code
